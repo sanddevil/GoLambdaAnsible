@@ -1,0 +1,36 @@
+---
+
+
+
+# Firewall settings
+firewall_enabled: true
+firewall_allowed_tcp_ports:
+  - "22"
+  - "25"
+  - "80"
+  - "81"
+  - "443"
+  - "4444"
+  - "5601"
+  - "8025"
+  - "8080"
+  - "8443"
+  - "8983"
+  - "9200"
+  - "11371"
+
+firewall_log_dropped_packets: false
+firewall_disable_firewalld: true
+firewall_disable_ufw: true
+
+# set the timezone to what you need
+user_timezone: Europe/London
+
+
+# Set Golang env
+environment_config:
+  GOPATH: /vagrant
+  GOBIN: /vagrant/bin
+
+# Set Golang bin path
+go_bin_path: /vagrant/bin

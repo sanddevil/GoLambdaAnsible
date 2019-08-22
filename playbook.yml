@@ -1,0 +1,33 @@
+---
+
+- hosts: all
+  become: yes
+
+  vars_files:
+    - config.yml
+  
+  roles:
+
+    # Golang
+    - role: andrewrothstein.go
+
+    # VMs are naturally unsafe places...
+    - role: geerlingguy.firewall
+
+    # Linux Tree command
+    - role: nephelaiio.tree
+
+    # Environmental variables
+    - role: weareinteractive.environment
+
+  tasks: 
+    - name: set timezone to default value
+      timezone:
+        name: "{{ user_timezone }}"
+
+    - name: Add another bin dir to system-wide $PATH.
+      copy:
+        dest: /etc/profile.d/custom-path.sh
+        content: 'PATH=$PATH:{{ go_bin_path }}'
+
+
