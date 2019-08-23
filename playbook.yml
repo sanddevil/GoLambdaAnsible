@@ -20,6 +20,11 @@
     # Environmental variables
     - role: weareinteractive.environment
 
+    # NodeJS
+    - role: geerlingguy.nodejs
+      nodejs_npm_global_packages:
+        - name: serverless
+
   tasks: 
     - name: set timezone to default value
       timezone:
