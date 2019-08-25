@@ -26,11 +26,10 @@ firewall_disable_ufw: true
 # set the timezone to what you need
 user_timezone: Europe/London
 
+# Set Golang bin path
+go_bin_path: /usr/local/go/bin
 
 # Set Golang env
 environment_config:
-  GOPATH: /vagrant
-  GOBIN: /vagrant/bin
-
-# Set Golang bin path
-go_bin_path: /vagrant/bin
+  GOPATH: /GoLambda
+  GOBIN: "{{ go_bin_path }}"

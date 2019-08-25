@@ -1,7 +1,9 @@
 ---
 
 - hosts: all
-  become: yes
+  become: true
+  environment:
+    PATH: "{{ ansible_env.PATH }}:{{ go_bin_path }}"
 
   vars_files:
     - config.yml
@@ -35,4 +37,8 @@
         dest: /etc/profile.d/custom-path.sh
         content: 'PATH=$PATH:{{ go_bin_path }}'
 
+    - name: Install go dep
+      shell: curl -s https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+      args:
+        creates: "{{ user_timezone }}/dep"
 
