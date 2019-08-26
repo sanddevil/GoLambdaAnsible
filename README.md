@@ -1,4 +1,4 @@
-#Go / AWS Lambda / Serverless Orchestration with Ansible + Vagrant
+# Go / AWS Lambda / Serverless Orchestration with Ansible + Vagrant
 
 This repo provides the orchestration scripts to accompany the Badzilla blog at [Go and AWS Lambda: Web Page with API Service](http://badzilla.co.uk/go-and-aws-lambda-web-page-api-service) 
 
@@ -6,7 +6,7 @@ To use the repo you will need Vagrant and VirtualBox installed on your host. As 
 ```bash
 $ vagrant up
 ```
-##Synced Folders
+## Synced Folders
 Have a look at the following line in the Vagrantfile:
 ```bash
 config.vm.synced_folder "../GoLambda", "/GoLambda/src"
