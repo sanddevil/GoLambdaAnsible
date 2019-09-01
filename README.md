@@ -9,7 +9,7 @@ $ vagrant up
 ## Synced Folders
 Have a look at the following line in the Vagrantfile:
 ```bash
-config.vm.synced_folder "../GoLambda", "/GoLambda/src"
+config.vm.synced_folder "../GoLambda/src", "/GoLambda/src"
 ```
 This says your host lambda functions will be at the same level as this repo, but in a directory called `GoLambda/src`
 Your guest directory will be at `/GoLambda/src/`. If you don't like these defaults, feel free to change them.
