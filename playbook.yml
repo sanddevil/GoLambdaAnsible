@@ -42,3 +42,9 @@
       args:
         creates: "{{ user_timezone }}/dep"
 
+    - name: Set permissions on /GoLambda - change this dir if you've changed the sync dir in Vagrantfile
+      file:
+        path: /GoLambda
+        owner: vagrant
+        group: vagrant
+        mode: u=rwx,g=rx,o=rx
