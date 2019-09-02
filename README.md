@@ -21,6 +21,19 @@ $ cd /GoLambda/src
 $ serverless create -t aws-go-dep -p yourproject
 ```
 
+## AWS Credentials and Config files
+The AWS credential and config files are below with their default values. Either populate these files as appropriate, or use environment variables instead.
+```bash
+$ cd
+$ cat .aws/config 
+[default]
+region = eu-west-2
+$ cat .aws/credentials 
+[default]
+aws_access_key_id = youreAWSkey
+aws_secret_access_key = youreAWSsecret
+```
+
 ## Configuring GoLand for Host / Guest VM Workflow
 If you are using GoLand as your IDE on your host, there is a little configuration required to ensure that GoLand can resolve all types in the VM guest. 
 Without this you will be facing a screen with many red underlines and no autocomplete. Nightmare and certain to increase 

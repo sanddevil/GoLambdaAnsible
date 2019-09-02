@@ -27,6 +27,14 @@
       nodejs_npm_global_packages:
         - name: serverless
 
+    # AWS Credentials File
+    - role: ypsman.aws_credentials
+      aws_user: 'vagrant'
+      aws_userhome: '/home/vagrant'
+      aws_region: 'eu-west-2'
+      aws_key_id: 'youreAWSkey'
+      aws_secret: 'youreAWSsecret'
+
   tasks: 
     - name: set timezone to default value
       timezone:
@@ -48,3 +56,11 @@
         owner: vagrant
         group: vagrant
         mode: u=rwx,g=rx,o=rx
+
+    - name: Set permissions on AWS credentials and config file
+      file:
+        path: /home/vagrant/.aws
+        owner: vagrant
+        group: vagrant
+        recurse: yes
+        mode: u=rwx
