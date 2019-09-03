@@ -35,6 +35,9 @@
       aws_key_id: 'youreAWSkey'
       aws_secret: 'youreAWSsecret'
 
+    # Docker engine - required to run serverless locally for debugging
+    - role: pauvos.docker_engine
+
   tasks: 
     - name: set timezone to default value
       timezone:
@@ -64,3 +67,9 @@
         group: vagrant
         recurse: yes
         mode: u=rwx
+
+    - name: Add vagrant user to the docker group
+      user:
+        name: vagrant
+        groups: docker
+        append: yes
