@@ -7,7 +7,16 @@
 
   vars_files:
     - config.yml
-  
+
+  pre_tasks:
+    - name: Install apt packages
+      apt:
+        name: "{{ packages }}"
+      vars:
+        packages:
+          - jq
+
+
   roles:
 
     # Golang
@@ -34,6 +43,9 @@
       aws_region: 'eu-west-2'
       aws_key_id: 'youreAWSkey'
       aws_secret: 'youreAWSsecret'
+
+    # AWS CLI
+    - role: tommarshall.awscli
 
     # Docker engine - required to run serverless locally for debugging
     - role: pauvos.docker_engine
