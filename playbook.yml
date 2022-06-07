@@ -45,10 +45,32 @@
       aws_secret: 'youreAWSsecret'
 
     # AWS CLI
-    - role: tommarshall.awscli
+#    - role: tommarshall.awscli
+#      awscli_version: 1.16.269
 
     # Docker engine - required to run serverless locally for debugging
     - role: pauvos.docker_engine
+
+    # nginx
+    - role: geerlingguy.nginx
+      nginx_extra_http_options: |
+        fastcgi_buffers 16 16k;
+        fastcgi_buffer_size 32k;
+      nginx_vhosts:
+        - listen: 80
+          server_name: "startingword.test"
+          root: "/opt/GenericGoRepos/startingword/web/dist/"
+          index: "index.html index.htm"
+          error_page: "500 502 503 504 /50x.html"
+          access_log: "/var/log/nginx/startingword.access.log"
+          error_log: "/var/log/nginx/startingword.error.log"
+          state: "present"
+          template: "{{ nginx_vhost_template }}"
+          filename: "startingword.test.conf"
+          extra_parameters: |
+            location / {
+              try_files $uri $uri/ =404;
+            }
 
   tasks: 
     - name: set timezone to default value
@@ -60,17 +82,22 @@
         dest: /etc/profile.d/custom-path.sh
         content: 'PATH=$PATH:{{ go_bin_path }}'
 
-    - name: Install go dep
-      shell: curl -s https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
-      args:
-        creates: "{{ user_timezone }}/dep"
+    - name: Add another bin dir to system-wide $PATH.
+      copy:
+        dest: /etc/profile.d/custom-path2.sh
+        content: 'PATH=$PATH:{{ go_execute_path }}'
 
-    - name: Set permissions on /GoLambda - change this dir if you've changed the sync dir in Vagrantfile
-      file:
-        path: /GoLambda
-        owner: vagrant
-        group: vagrant
-        mode: u=rwx,g=rx,o=rx
+#    - name: Install go dep
+#      shell: curl -s https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+#      args:
+#        creates: "{{ user_timezone }}/dep"
+
+#    - name: Set permissions on /GoLambda - change this dir if you've changed the sync dir in Vagrantfile
+#      file:
+#        path: /GoLambda
+#        owner: vagrant
+#        group: vagrant
+#        mode: u=rwx,g=rx,o=rx
 
     - name: Set permissions on AWS credentials and config file
       file:

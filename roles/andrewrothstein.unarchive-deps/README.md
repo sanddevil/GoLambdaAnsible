@@ -1,8 +1,8 @@
 andrewrothstein.unarchive-deps
 ==============
-[![Build Status](https://travis-ci.org/andrewrothstein/ansible-unarchive-deps.svg?branch=master)](https://travis-ci.org/andrewrothstein/ansible-unarchive-deps)
+![Build Status](https://github.com/andrewrothstein/ansible-unarchive-deps/actions/workflows/build.yml/badge.svg)
 
-Dependencies for the Ansible unarchive module, et. al.
+Dependencies for either the Ansible unarchive or win_unzip module, et. al.
 
 Example Playbook
 ----------------
@@ -21,4 +21,5 @@ MIT
 Author Information
 ------------------
 
-Andrew Rothstein <andrew.rothstein@gmail.com>
+* Andrew Rothstein <andrew.rothstein@gmail.com>
+* Victor Michel <victormichel95@gmail.com>

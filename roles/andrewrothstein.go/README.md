@@ -1,6 +1,6 @@
 andrewrothstein.go
 ==================
-[![Build Status](https://travis-ci.org/andrewrothstein/ansible-go.svg?branch=master)](https://travis-ci.org/andrewrothstein/ansible-go)
+![Build Status](https://github.com/andrewrothstein/ansible-go/actions/workflows/build.yml/badge.svg)
 
 Installs [Go](https://golang.org/dl)
 

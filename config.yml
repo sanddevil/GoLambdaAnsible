@@ -27,9 +27,12 @@ firewall_disable_ufw: true
 user_timezone: Europe/London
 
 # Set Golang bin path
-go_bin_path: /usr/local/go/bin
+go_bin_path: /opt/GenericGoRepos/startingword/bin
+
+# Set Golang executable path
+go_execute_path: /usr/local/go/bin/go
 
 # Set Golang env
 environment_config:
-  GOPATH: /GoLambda
   GOBIN: "{{ go_bin_path }}"
+  GO111MODULE: "auto"
